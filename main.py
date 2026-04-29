@@ -13,6 +13,7 @@ GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD")
 NOTIFY_EMAILS = os.getenv("NOTIFY_EMAILS", "").split(",")
 CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "15"))
 
+os.environ["PLAYWRIGHT_BROWSERS_PATH"] = "0"
 SESSION_DIR = os.getenv("SESSION_DIR", "/tmp/user_data")
 os.makedirs(SESSION_DIR, exist_ok=True)
 
