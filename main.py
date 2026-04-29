@@ -14,6 +14,8 @@ NOTIFY_EMAILS = os.getenv("NOTIFY_EMAILS", "").split(",")
 CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "15"))
 
 SESSION_DIR = os.getenv("SESSION_DIR", "/tmp/user_data")
+os.makedirs(SESSION_DIR, exist_ok=True)
+
 IS_CLOUD = os.getenv("CLOUD", "false") == "true"
 
 TARGET_URL = "https://academicinfo.ubbcluj.ro/ContracteStudii.aspx"

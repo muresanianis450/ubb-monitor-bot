@@ -2,7 +2,7 @@
   "build": {
     "commands": [
       "pip install -r requirements.txt",
-      "playwright install"
+      "playwright install --with-deps chromium"
     ]
   }
 }
