@@ -1,0 +1,133 @@
+2026-04-29 14:56:49,411  INFO  ============================================================
+2026-04-29 14:56:49,411  INFO  UBB Contract Monitor started
+2026-04-29 14:56:49,411  INFO  Checking every 10s  �  Notifying: muresanianis450@gmail.com
+2026-04-29 14:56:49,412  INFO  ============================================================
+2026-04-29 14:56:49,683  INFO  ====== WebDriver manager ======
+2026-04-29 14:56:50,851  INFO  Get LATEST chromedriver version for google-chrome
+2026-04-29 14:56:51,277  INFO  Get LATEST chromedriver version for google-chrome
+2026-04-29 14:56:51,624  INFO  There is no [win64] chromedriver "147.0.7727.117" for browser google-chrome "147.0.7727" in cache
+2026-04-29 14:56:51,656  INFO  Get LATEST chromedriver version for google-chrome
+2026-04-29 14:56:52,485  INFO  WebDriver version 147.0.7727.117 selected
+2026-04-29 14:56:52,492  INFO  Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/147.0.7727.117/win32/chromedriver-win32.zip
+2026-04-29 14:56:52,492  INFO  About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/147.0.7727.117/win32/chromedriver-win32.zip
+2026-04-29 14:56:52,911  INFO  Driver downloading response is 200
+2026-04-29 14:56:54,473  INFO  Get LATEST chromedriver version for google-chrome
+2026-04-29 14:56:54,965  INFO  Driver has been saved in cache [C:\Users\mures\.wdm\drivers\chromedriver\win64\147.0.7727.117]
+2026-04-29 14:56:56,150  INFO  Logging in to AcademicInfo�
+2026-04-29 14:57:11,787  ERROR  Login step failed: Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x60b373+10553]
+	chromedriver!GetHandleVerifier [0x60b4a4+10684]
+	chromedriver!(No symbol) [0x411e10]
+	chromedriver!(No symbol) [0x45a9da]
+	chromedriver!(No symbol) [0x45ac7b]
+	chromedriver!(No symbol) [0x49d162]
+	chromedriver!(No symbol) [0x47d8b4]
+	chromedriver!(No symbol) [0x49aa36]
+	chromedriver!(No symbol) [0x47d606]
+	chromedriver!(No symbol) [0x450039]
+	chromedriver!(No symbol) [0x450df4]
+	chromedriver!GetHandleVerifier [0x88ddb4+292f94]
+	chromedriver!GetHandleVerifier [0x88937d+28e55d]
+	chromedriver!GetHandleVerifier [0x8a8215+2ad3f5]
+	chromedriver!GetHandleVerifier [0x624c18+29df8]
+	chromedriver!GetHandleVerifier [0x62c6fd+318dd]
+	chromedriver!GetHandleVerifier [0x613c78+18e58]
+	chromedriver!GetHandleVerifier [0x613e42+19022]
+	chromedriver!GetHandleVerifier [0x5fd45f+263f]
+	KERNEL32!BaseThreadInitThunk [0x75a85d49+19]
+	ntdll!RtlInitializeExceptionChain [0x77a8d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x77a8d7c1+231]
+
+2026-04-29 15:04:01,044  INFO  ============================================================
+2026-04-29 15:04:01,045  INFO  UBB Contract Monitor v3  |  every 10s  |  → muresanianis450@gmail.com
+2026-04-29 15:04:01,045  INFO  ============================================================
+2026-04-29 15:04:01,423  INFO  [#1] 🟢 OPEN!
+2026-04-29 15:04:22,576  ERROR  ❌  Email failed: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+2026-04-29 15:06:16,854  INFO  ============================================================
+2026-04-29 15:06:16,854  INFO  UBB Contract Monitor v4  |  every 10s  |  → muresanianis450@gmail.com
+2026-04-29 15:06:16,854  INFO  ============================================================
+2026-04-29 15:06:16,854  INFO  Sending test email to verify Gmail is working…
+2026-04-29 15:07:22,644  INFO  ============================================================
+2026-04-29 15:07:22,645  INFO  UBB Contract Monitor v4  |  every 10s  |  → muresanianis450@gmail.com
+2026-04-29 15:07:22,645  INFO  ============================================================
+2026-04-29 15:07:22,645  INFO  Sending test email to verify Gmail is working…
+2026-04-29 15:07:42,663  WARNING  Port 587/STARTTLS failed: timed out — trying next…
+2026-04-29 15:08:17,624  INFO  ============================================================
+2026-04-29 15:08:17,624  INFO  UBB Contract Monitor v4  |  every 10s  |  → muresanianis450@gmail.com
+2026-04-29 15:08:17,625  INFO  ============================================================
+2026-04-29 15:08:17,625  INFO  Sending test email to verify Gmail is working…
+2026-04-29 15:08:19,624  INFO  ✅  Alert sent via 587/STARTTLS to ['muresanianis450@gmail.com']
+2026-04-29 15:08:20,531  INFO  [#1] 🟢 OPEN!
+2026-04-29 15:08:22,552  INFO  ✅  Alert sent via 587/STARTTLS to ['muresanianis450@gmail.com']
+2026-04-29 15:11:51,785  INFO  ============================================================
+2026-04-29 15:11:51,785  INFO  Monitoring: Sem:5 An:2026  |  every 10s  |  → muresanianis450@gmail.com
+2026-04-29 15:11:51,786  INFO  ============================================================
+2026-04-29 15:11:51,786  INFO  Sending test email…
+2026-04-29 15:12:07,344  INFO  ✅  Alert sent to ['muresanianis450@gmail.com']
+2026-04-29 15:12:50,627  INFO  ============================================================
+2026-04-29 15:12:50,627  INFO  Monitoring: Sem:4 An:2025  |  every 10s  |  → muresanianis450@gmail.com
+2026-04-29 15:12:50,628  INFO  ============================================================
+2026-04-29 15:12:50,628  INFO  Sending test email…
+2026-04-29 15:13:00,221  INFO  ✅  Alert sent to ['muresanianis450@gmail.com']
+2026-04-29 15:13:23,749  INFO  ============================================================
+2026-04-29 15:13:23,749  INFO  Monitoring: Sem:4 An:2025  |  every 10s  |  → muresanianis450@gmail.com
+2026-04-29 15:13:23,750  INFO  ============================================================
+2026-04-29 15:13:23,750  INFO  Sending test email…
+2026-04-29 15:13:26,356  INFO  ✅  Alert sent to ['muresanianis450@gmail.com']
+2026-04-29 15:13:27,596  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:13:27,597  WARNING  [#1] Semester not found on page, retrying…
+2026-04-29 15:13:38,623  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:13:38,624  WARNING  [#2] Semester not found on page, retrying…
+2026-04-29 15:13:50,845  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:13:50,847  WARNING  [#3] Semester not found on page, retrying…
+2026-04-29 15:14:01,008  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:14:01,009  WARNING  [#4] Semester not found on page, retrying…
+2026-04-29 15:14:12,822  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:14:12,823  WARNING  [#5] Semester not found on page, retrying…
+2026-04-29 15:14:24,022  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:14:24,023  WARNING  [#6] Semester not found on page, retrying…
+2026-04-29 15:14:34,824  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:14:34,825  WARNING  [#7] Semester not found on page, retrying…
+2026-04-29 15:14:46,312  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:14:46,313  WARNING  [#8] Semester not found on page, retrying…
+2026-04-29 15:14:56,779  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:14:56,780  WARNING  [#9] Semester not found on page, retrying…
+2026-04-29 15:21:57,624  INFO  ============================================================
+2026-04-29 15:21:57,625  INFO  Monitoring: Sem:4 An:2026  |  every 10s  |  -> muresanianis450@gmail.com
+2026-04-29 15:21:57,625  INFO  ============================================================
+2026-04-29 15:21:57,625  INFO  Sending test email…
+2026-04-29 15:22:56,114  INFO  ============================================================
+2026-04-29 15:22:56,114  INFO  Monitoring: Sem:4 An:2026  |  every 10s  |  -> muresanianis450@gmail.com
+2026-04-29 15:22:56,114  INFO  ============================================================
+2026-04-29 15:22:56,115  INFO  Sending test email…
+2026-04-29 15:23:06,802  INFO  ✅  Alert sent to ['muresanianis450@gmail.com']
+2026-04-29 15:23:07,453  WARNING  'Sem:4 An:2026' not found on page — saving snapshot.html
+2026-04-29 15:23:07,454  WARNING  [#1] Semester not found on page, retrying…
+2026-04-29 15:26:38,615  INFO  ============================================================
+2026-04-29 15:26:38,615  INFO  Monitoring: Sem:4 An:2025  |  every 10s  |  -> muresanianis450@gmail.com
+2026-04-29 15:26:38,616  INFO  ============================================================
+2026-04-29 15:26:38,616  INFO  Sending test email…
+2026-04-29 15:26:40,503  INFO  ✅  Alert sent to ['muresanianis450@gmail.com']
+2026-04-29 15:26:41,183  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:26:41,183  WARNING  [#1] Semester not found on page, retrying…
+2026-04-29 15:26:51,340  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:26:51,341  WARNING  [#2] Semester not found on page, retrying…
+2026-04-29 15:34:49,978  INFO  ============================================================
+2026-04-29 15:34:49,979  INFO  Monitoring: Sem:4 An:2025  |  every 10s  |  -> muresanianis450@gmail.com
+2026-04-29 15:34:49,979  INFO  ============================================================
+2026-04-29 15:34:49,979  INFO  Sending test email…
+2026-04-29 15:35:03,502  ERROR  ❌  Email failed: [WinError 10053] An established connection was aborted by the software in your host machine
+2026-04-29 15:35:04,495  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:35:04,497  WARNING  [#1] Semester not found on page, retrying…
+2026-04-29 15:35:09,255  INFO  ============================================================
+2026-04-29 15:35:09,255  INFO  Monitoring: Sem:4 An:2025  |  every 10s  |  -> muresanianis450@gmail.com
+2026-04-29 15:35:09,256  INFO  ============================================================
+2026-04-29 15:35:09,256  INFO  Sending test email…
+2026-04-29 15:35:16,926  INFO  ✅  Alert sent to ['muresanianis450@gmail.com']
+2026-04-29 15:35:17,691  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:35:17,693  WARNING  [#1] Semester not found on page, retrying…
+2026-04-29 15:35:28,055  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:35:28,056  WARNING  [#2] Semester not found on page, retrying…
+2026-04-29 15:35:38,403  WARNING  'Sem:4 An:2025' not found on page — saving snapshot.html
+2026-04-29 15:35:38,404  WARNING  [#3] Semester not found on page, retrying…

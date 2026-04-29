@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Nou -->
+    <!-- jQuery GLOBAL (disponibil pentru toate paginile child) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <script>
+      if (!window.jQuery) {
+        document.write('<script src="/Scripts/jquery-3.7.1.min.js"><\/script>');
+      }
+    </script>
+
+    <!-- (opțional) Bootstrap, dacă e folosit global -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <!-- AICI, abia după jQuery, vin placeholderul de head și restul -->
+    
+    <!-- .... -->
+
+    <meta charset="utf-8" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><title>
+	ContracteStudii
+</title><meta name="description" /><meta name="keywords" />
+
+
+    <script>
+        $(document).ready(function () {
+            $(".table td table tr>td").prepend('<i class="fas fa-check"></i>');
+
+            $("#meniu_toggle").click(function (e) {
+                if ($('#row_left').hasClass('open_rowleft')) {
+                    $('#row_left').removeClass('open_rowleft').addClass('close_rowleft');
+                    $('#meniu_toggle').find('i').removeClass('fa-times').addClass('fa-bars');
+                    $('#content').removeClass('normal_content').addClass('full_content');
+                }
+                else {
+                    $('#row_left').removeClass('close_rowleft').addClass('open_rowleft');
+                    $('#meniu_toggle').find('i').addClass('fa-times').removeClass('fa-bars');
+                    $('#content').addClass('normal_content').removeClass('full_content');
+
+                }
+                e.preventDefault();
+
+
+            });
+
+            $(document).mouseup(function (e) {
+                var container = $("#row_left");
+
+                if (container.is(e.target) && container.has(e.target).length === 0) {
+                    $('#row_left').removeClass('close_rowleft').addClass('open_rowleft');
+                    $('#meniu_toggle').find('i').addClass('fa-times').removeClass('fa-bars');
+                    $('#content').addClass('normal_content').removeClass('full_content');
+                }
+            });
+
+
+
+        });
+    </script>
+
+
+    <!-- Favicons -->
+    <link rel="icon" href="favicon.ico" type="image/ico" />
+    <!-- Google Fonts -->
+
+
+    <!-- Vendor CSS Files -->
+    <link href="CSS_Angajati/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" /><link href="CSS_Angajati/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" /><link href="CSS_Angajati/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" /><link href="CSS_Angajati/vendor/quill/quill.snow.css" rel="stylesheet" /><link href="CSS_Angajati/vendor/quill/quill.bubble.css" rel="stylesheet" /><link href="CSS_Angajati/vendor/remixicon/remixicon.css" rel="stylesheet" /><link href="CSS_Angajati/vendor/simple-datatables/style.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="CSS_Angajati/css/style.css" rel="stylesheet" />
+
+
+    <!-- vechi-->
+    <link rel="icon" href="favicon.ico" type="image/ico" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+    <!-- fontawesome-->
+    <link href="css/all.css" rel="stylesheet" type="text/css" /><link href="css/solid.css" rel="stylesheet" type="text/css" /><link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!-- bootstrap-->
+    <link href="css/bootstrap.min.css" rel="stylesheet" /><link href="css/bootstrap-table.min.css" rel="stylesheet" />
+    <script type="text/javascript" async="" src="https://matomo.ubbcluj.ro/matomo.js"></script>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+
+    <script src="js/tablecustom.js"></script>
+
+    <!-- bootstrap-->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-table.min.js"></script>
+
+    <!-- end vechi-->
+
+    <!-- Matomo -->
+    <script type="text/javascript">
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['disableCookies']);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        _paq.push(['trackAllContentImpressions']);
+        (function () {
+            var u = "https://matomo.ubbcluj.ro/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '6']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript'; g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
+
+
+    <style>
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #fff;
+            color: #ffffff;
+            text-align: center;
+            font-size: 10px;
+            padding-left: 15px;
+        }
+
+            .footer .copy_footer {
+                text-align: left;
+                color: #666666;
+                clear: left;
+            }
+    </style>
+    
+    <link href="StyleSheet/Style2.css" rel="stylesheet" type="text/css" />
+    <title>ContractStudiu </title>
+</head>
+<body>
+    <script src="Scripts/wz_tooltip.js" type="text/javascript"></script>
+    <form name="aspnetForm" method="post" action="./ContracteStudii.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZAihususO0d8FNrgzGOwsoFviDl3C54gVXtoN-ckO0iHDfDf_Kji1qrj8yfKhbEsUA2&amp;t=638459896569584809" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=NJmAwtEo3Ipnlaxl6CMhvg6Ot_TnkQj0OzMUCw1mTp1WETocbI1xTnWpxsgmBqCCUNOtoptMN0fp-bdb1k4Iw0zGpSePLXCgNbDECF-HFRmZ0GtiQiT_o_Sn9QFGJIQLXdRC1VEXhRHlpyhmwv1QgFdtOg_r2GKqMI5h66DaGWE1&amp;t=74258c30" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=dwY9oWetJoJoVpgL6Zq8OOZsG9T3cI0yCQ4FvvjO9gssu5_Iw882rR_fAiW9qqyAcNRVU6PNCNPBtXoIYoclOYgQmeL8vTXw27Ytxy8PeiTtUV0U_eEAGCZjO1sNxXtN_w1DMHNkn8aUuX9CgqrYywrMeCmRGRNUgbYJk3JalgY1&amp;t=74258c30" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E7D53568" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="ypRc9of2ftIu+5xNdsG8vP9P7Z3nb+U9yc17M6mYCGqT0alRsLSZDl9E38j2OgwqM/VbWomfT50RiI9kih2cCSY73/siR8ptJPjA4FBjcXSdCcPgcNp/8XSeDjhRxFDGYJ4NBBSCTqPnWeMHkpYyu5K5Lc6zrfjqrLwwhbXGrqbcdjOkxmT3FbW5zaZFVlO5mf6Rra3ZLooq46Rp+/Lrn6n5SsCr/kHqlfHQjoq9e3FcJNq/on4/DEPZTPHK3i+BPdxTGaM1BLB70x/wGMYYjnYbxfCoW8Rbo0KeTDSL6K4MQac5b6i4Yes1hSKNR4FDrj+IF7V24jwxSTVngN6x5LBIUMVxaFlxpgvFe+QfnyM+agqaWv06JwXTYaDA3GPWHN8LHyT2kWmslY5UpKfABG2J3aUFkfgfdVAORgWpM487X85tDtgZ1nJz2KYjhDm/bbimpFLSIVPDdZfVpeZfBg==" />
+</div>
+
+
+        <!-- ======= Header ======= -->
+        <header id="header" class="header fixed-top d-flex align-items-center">
+            <div class="col-lg-2 logo d-flex align-items-center justify-content-between">
+                
+                
+            </div>
+            <!-- End Logo -->
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+            <div class="col-lg-6 align-items-center justify-content-between text-center ">
+                <h1>Academic<em style="color: #F44336;">Info</em></h1>
+            </div>
+            <!-- End Search Bar -->
+
+            <nav class="header-nav ms-auto">
+                <ul class="d-flex align-items-center">
+                    <li class="nav-item dropdown pe-3">
+                        <a class="nav-link nav-profile d-flex align-items-center pe-0 fs-4">
+                            <i class="ri-account-circle-fill"></i>
+                            <span id="ctl00_lblNume">MUREȘAN IANIS-CONSTANTIN</span>
+                        </a>
+                        <!-- End Profile Iamge Icon -->
+                        <!-- End Profile Dropdown Items -->
+                    </li>
+                    <!-- End Profile Nav -->
+                </ul>
+            </nav>
+
+            <!-- End Icons Navigation -->
+
+        </header>
+        <!-- End Header -->
+
+        <!-- ======= Sidebar ======= -->
+        <aside id="sidebar" class="sidebar">
+            <ul class="sidebar-nav" id="sidebar-nav">
+                <li class="header_logo text-center ">
+                    <a href="https://www.ubbcluj.ro/ro/" target="_blank" class="logo d-flex align-items-center">
+                        <img src="CSS_Angajati/img/Logo-UBB-alb.svg" alt="">
+                    </a>
+
+                </li>
+                <li class=" py-1  text-right pr-1 header_logo">
+                    <input type="image" name="ctl00$ImageButtonRO" id="ctl00_ImageButtonRO" title="Română" Text="RO" src="Images/ro.png" style="border-width:0px;" />  &nbsp;
+                    <input type="image" name="ctl00$ImageButtonHU" id="ctl00_ImageButtonHU" title="Magyar" Text="HU" src="Images/hu.png" style="border-width:0px;" />  &nbsp; 
+                    <input type="image" name="ctl00$ImageButtonEN" id="ctl00_ImageButtonEN" title="English" Text="EN" src="Images/gb.png" style="border-width:0px;" />  &nbsp;
+                    <input type="image" name="ctl00$ImageButtonDE" id="ctl00_ImageButtonDE" title="Deutsch" Text="DE" src="Images/de.png" style="border-width:0px;" />
+                </li>
+
+                <li id="ctl00_link_Home" class="nav-item">
+                    <a href="Home.aspx" id="ctl00_A2" class="nav-link collapsed" title="Home">
+                        <i class="bi bi-house"></i>
+                        <span id="ctl00_Label1Home">Home</span>
+                    </a></li>
+
+                <li id="ctl00_link_Studenti" class="nav-item">
+                    <a href="Studenti.aspx" class="nav-link collapsed">
+                        <i class="bi bi-info"></i>
+                        <span id="ctl00_Label1">Informatii</span></a>
+                </li>
+
+                <li id="ctl00_link_IdentitateaTa" class="nav-item">
+                    <a href="IdentitateaTa.aspx" class="nav-link collapsed">
+                        <i class="bi bi-person-vcard"></i>
+                        <span id="ctl00_lblIdentitateaTa">Identitatea Ta</span>
+                    </a>
+                </li>
+
+                <!-- Nou -->
+                <!-- Virtual Wallet (vizibil doar pentru conturile de test) -->
+                
+                <!--------->
+               
+                
+
+
+                
+                <li id="ctl00_link_Note" class="nav-item">
+                    <a href="Note.aspx" id="ctl00_HyperLinkNote_" class="nav-link collapsed">
+                        <i class="bi bi-list-ul"></i>
+                        <span id="ctl00_Label1ConsultareNote">Consultare note</span></a></li>
+                <li id="ctl00_link_NoteProvizorii" class="nav-item">
+                    <a href="NoteProvizorii.aspx" id="ctl00_hlNote_" class="nav-link collapsed">
+                        <i class="bi bi-list-ul"></i>
+                        <span id="ctl00_Label1ConsultareNoteProvizorii">Consultare note provizorii</span></a>
+
+                </li>
+                <li id="ctl00_link_Evaluari" class="nav-item">
+                    <a href="Evaluari.aspx" id="ctl00_HyperLink3_" class="nav-link collapsed">
+                        <i class="bi bi-list-ul"></i>
+                        <span id="ctl00_Label1EvaluareProfesori">Evaluare profesori</span></a></li>
+                <li id="ctl00_link_StudentiPlanInvatamant" class="nav-item">
+                    <a href="StudentiPlanInvatamant.aspx" id="ctl00_hlStudentiPlanInvatamant_" class="nav-link collapsed">
+                        <i class="bi bi-list-ul"></i>
+                        <span id="ctl00_Label1PlanInvatamant">Plan invatamant</span>
+                    </a></li>
+                <li id="ctl00_link_ContracteStudii" class="active">
+                    <a href="ContracteStudii.aspx" id="ctl00_hlContracte_" class="nav-link collapsed">
+                         <i class="bi bi-pencil-square"></i>
+                        <span id="ctl00_Label1ContracteStudii">Contracte studii</span></a>
+
+                </li>
+
+                <li id="ctl00_link_IncarcaDocumente" class="nav-item">
+                    <a href="IncarcaDocumente.aspx" id="ctl00_hl_IncarcaDocumente" class="nav-link collapsed">
+                        <i class="bi bi-upload"></i>
+                        <span id="ctl00_lblIncarcaDocumente">Incarcă documente </span></a>
+
+                </li>
+
+                
+
+                <li id="ctl00_link_StudentiInscriereLaExamen" class="nav-item">
+                    <a href="StudentiInscriereLaExamene.aspx" id="ctl00_hlStudentiInscriereLaExamen_" class="nav-link collapsed">
+                        <i class="bi bi-pencil-square"></i>
+                        <span id="ctl00_Label1InscriereLaExamen">Inscriere la examen</span></a>
+                </li>
+
+                <li id="ctl00_link_ProgramariExameneSectie" class="nav-item">
+                    <a href="ProgramariExameneSectie.aspx" id="ctl00_hlProgramariExameneSectie" class="nav-link collapsed">
+                        <i class="bi bi-list-ul"></i>
+                        <span id="ctl00_Label1ProgramariExameneSectie">Examene programate pe sectie</span></a>
+                </li>
+                
+
+                
+
+                <li id="ctl00_link_InscriereLucrariAbsolvire" class="nav-item">
+                    <a href="InscriereLucrariAbsolvire.aspx" id="ctl00_A1" title="Home" class="nav-link collapsed">
+                        <i class="bi bi-pencil-square"></i>
+                        <span id="ctl00_Label2">Inscriere  lucrare absolvire</span>
+                    </a>
+                </li>
+                <li id="ctl00_link_TabelLucrariAbsolvireSectie" class="nav-item">
+                    <a href="TabelLucrariAbsolvireSectie.aspx" class="nav-link collapsed">
+                        <i class="bi bi-list-ul"></i>
+                        <span id="ctl00_Label3">Tabel Lucrari Absolvire</span></a>
+                </li>
+
+                
+
+             
+                <li id="ctl00_link_Taxe" class="nav-item">
+                    <a href="Taxe.aspx" id="ctl00_hltaxe_" class="nav-link collapsed">
+                        <i class="bi bi-cash"></i>
+                        <span id="ctl00_Label1Taxe">Taxe</span></a></li>
+
+                <li id="ctl00_link_Burse" class="nav-item">
+                    <a href="Burse.aspx" id="ctl00_hlBurse_" class="nav-link collapsed">
+                        <i class="bi bi-grid"></i>
+                        <span id="ctl00_LabelBurse">Burse</span></a></li>
+
+                <li id="ctl00_link_SchimbareParolaStudenti" class="nav-item">
+                    <a href="SchimbareParolaStudenti.aspx" id="ctl00_hlSchimbareParola_" class="nav-link collapsed">
+                        <i class="bi bi-person-fill-gear"></i>
+                        <span id="ctl00_Label1SchimbareParola">Schimbare Parola</span></a></li>
+
+
+                <li class="header_top pt-2 ">
+
+
+                    <a href="https://dtic.ubbcluj.ro/" target="_blank"
+                        class="logo ">
+                        <img src="CSS_Angajati/img/Logo-DTIC-alb.svg" />
+                    </a>
+                </li>
+            </ul>
+
+
+
+        </aside>
+        <!-- End Sidebar-->
+        <main id="main" class="main pb-2 ">
+            <div class="row  text-end pb-2  ">
+                <div class="col-12   text-end  pe-5">
+                    <a class="modal-title" href="Default.aspx">
+                        <i class="bi bi-box-arrow-right fs-6"></i>
+                        <span>Sign Out </span>
+                    </a>
+                </div>
+            </div>
+            <div class="labelNume">
+
+
+                <div id="ctl00_DivInfo" class="row ">
+                    
+
+                    
+                    
+                </div>
+
+            </div>
+            <div class="row pb-3">
+                 
+                
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ContentPlaceHolder1$ScriptManager1', 'aspnetForm', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+    <div id="content_article_header" class="card">
+        <div class="row text-end pe-5">
+            <a target="_blank" href="Documente/CursAltefacultati.pdf">Ghid selectare cursuri alte facultati</a>
+        </div>
+        <div class="row">
+            <span id="ctl00_ContentPlaceHolder1_lblPagina" class="card-title">Contracte Studii</span>
+        </div>
+
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div id="content_article_filters" class="content_box">
+                <div class="row">
+
+
+                    <div class="col">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" aria-hidden="true"><span class="circle">1</span>
+                                        <span id="ctl00_ContentPlaceHolder1_lblSelectSectia" class="text-blue">Selectati Sectia:</span>
+                                    </span>
+                                </div>
+
+                                <select name="ctl00$ContentPlaceHolder1$DropDownListSectii" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$DropDownListSectii\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_ContentPlaceHolder1_DropDownListSectii" class="form-control">
+	<option selected="selected" value="387137|23658|93209">Informatică (&#238;n limba engleză) -&gt; 2024/2027 </option>
+
+</select>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    
+                </div>
+            </div>
+            <div id="content_article_table" class="content_box">
+                <div class="row table-responsive">
+
+                    <div style="font-size: 17px; color: black; font-family: Tahoma; font-variant: normal;">
+
+                        <table id="ctl00_ContentPlaceHolder1_tableDate" width="80%" class="table-responsive" style="text-align: center; margin-left: auto; margin-right: auto;">
+	<tr>
+		<td style="text-align: center;" colspan="6">
+                                    <h4>
+                                        <span id="ctl00_ContentPlaceHolder1_labelFacultatea" class="text-blue">Facultatea de Matematică şi Informatică</span>
+                                        <br />
+                                    </h4>
+                                </td>
+	</tr>
+	<tr style="text-align: center;">
+		<td style="text-align: center; font-size: 1em; font-family: &#39;Roboto Condensed&#39;, sans-serif; text-align: center; color: #426bc8;">
+                                    <span id="ctl00_ContentPlaceHolder1_lblNume">Nume student</span>
+                                </td>
+		<td style="text-align: center; font-size: 1em; font-family: &#39;Roboto Condensed&#39;, sans-serif; text-align: center; color: #426bc8;">
+                                    <span id="ctl00_ContentPlaceHolder1_lblCNP">CNP</span>
+                                </td>
+		<td style="text-align: center; font-size: 1em; font-family: &#39;Roboto Condensed&#39;, sans-serif; text-align: center; color: #426bc8;">
+                                    <span id="ctl00_ContentPlaceHolder1_lblMatricol">Numar matricol</span>
+                                </td>
+		<td style="text-align: center; font-size: 1em; font-family: &#39;Roboto Condensed&#39;, sans-serif; text-align: center; color: #426bc8;">
+                                    <span id="ctl00_ContentPlaceHolder1_lblGruoa">Grupa</span>
+                                </td>
+	</tr>
+	<tr>
+		<td style="text-align: center; width: 40%;">
+                                    <input name="ctl00$ContentPlaceHolder1$txtNume" type="text" value="MUREȘAN D.-O. IANIS-CONSTANTIN" id="ctl00_ContentPlaceHolder1_txtNume" disabled="disabled" class="form-control" style="width:100%;" />
+                                </td>
+		<td style="text-align: center; width: 20%;">
+                                    <input name="ctl00$ContentPlaceHolder1$txtCNP" type="text" value="5050510245044" id="ctl00_ContentPlaceHolder1_txtCNP" disabled="disabled" class="form-control" style="width:100%;" />
+                                </td>
+		<td style="text-align: center; width: 10%;">
+                                    <input name="ctl00$ContentPlaceHolder1$txtNumarMatricol" type="text" value="3779                                              " id="ctl00_ContentPlaceHolder1_txtNumarMatricol" disabled="disabled" class="form-control" style="width:100%;" />
+                                </td>
+		<td style="text-align: center; width: 10%;">
+                                    <input name="ctl00$ContentPlaceHolder1$txtGrupa" type="text" value="935" id="ctl00_ContentPlaceHolder1_txtGrupa" disabled="disabled" class="form-control" style="width:100%;" />
+                                </td>
+	</tr>
+</table>
+
+
+
+                    </div>
+
+                    <br />
+                    <div>
+                        <table style="width: 100%;">
+                            <tr>
+                                <th>
+                                    <h4>
+                                        <span id="ctl00_ContentPlaceHolder1_LabelContracte" class="text-blue">Contracte</span>
+                                    </h4>
+                                </th>
+                                <th class="text-center">
+                                    <h4>
+                                        <span id="ctl00_ContentPlaceHolder1_LabelDisInContr" class="text-blue">Discipline cuprinse in contract</span>
+                                    </h4>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%; height: 24px; text-align: center; vertical-align: top;">
+
+                                    <br />
+                                    <div id="ctl00_ContentPlaceHolder1_Panel1">
+	
+                                        <select size="10" name="ctl00$ContentPlaceHolder1$ListBoxSemestre" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$ListBoxSemestre\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_ContentPlaceHolder1_ListBoxSemestre" style="overflow-x: auto; overflow-y: auto;">
+		<option value="1">Sem:1 An:2024</option>
+		<option value="2">Sem:2 An:2024</option>
+		<option value="3">Sem:3 An:2025</option>
+		<option value="4">Sem:4 An:2025</option>
+		<option selected="selected" value="5">Sem:5 An:2026</option>
+		<option value="6">Sem:6 An:2026</option>
+
+	</select>
+                                        
+                                    
+</div>
+                                    <br />
+                                    <br />
+                                    
+                                </td>
+                                <td style="text-align: center; vertical-align: top; width: 80%;">
+                                    <div id="ctl00_ContentPlaceHolder1_mesajPeriadaCompletare" style="text-align: center; vertical-align: top; width: auto;">
+                                        <span id="ctl00_ContentPlaceHolder1_lblPeriaodaContractExpirata" style="color:Red;font-size:Medium;font-weight:bold;">Nu se pot completa contracte, data de azi nu este in intervalul aprobat.</span>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+
+        </main>
+
+        <div id="footer" class="footer">
+            <div id="copy_footer" class="copy_footer">
+                Copyright © UBB      &nbsp; &nbsp; &nbsp; 
+                <a href="https://www.ubbcluj.ro/ro/politici/" target="_blank">
+                    <span id="ctl00_lblMicrosoftTeams12">Protecția datelor cu caracter personal</span>
+                </a>
+                &nbsp; &nbsp; &nbsp; 
+                <a target="_blank" href="Termeni_si_conditii.aspx">
+                    <span id="ctl00_lblTermeni"> Termeni și Condiții </span>
+                </a>
+                &nbsp; &nbsp; &nbsp; 
+                <a target="_blank" href="Confidentialitate.aspx">
+                    <span id="ctl00_lblConfeidentialitate">Politica de confidentialitate</span>
+                </a>
+
+            </div>
+        </div>
+    </form>
+    <!-- Vendor JS Files -->
+    <script src="CSS_Angajati/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="CSS_Angajati/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="CSS_Angajati/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="CSS_Angajati/vendor/tinymce/tinymce.min.js"></script>
+
+
+    <!-- Template Main JS File -->
+    <script src="CSS_Angajati/js/main.js"></script>
+</body>
+</html>
+

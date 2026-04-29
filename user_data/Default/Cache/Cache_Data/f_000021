@@ -1,0 +1,642 @@
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Nou -->
+    <!-- jQuery GLOBAL (disponibil pentru toate paginile child) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <script>
+      if (!window.jQuery) {
+        document.write('<script src="/Scripts/jquery-3.7.1.min.js"><\/script>');
+      }
+    </script>
+
+    <!-- (opțional) Bootstrap, dacă e folosit global -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <!-- AICI, abia după jQuery, vin placeholderul de head și restul -->
+    
+    <!-- .... -->
+
+    <meta charset="utf-8" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><title>
+	Studenti
+</title><meta name="description" /><meta name="keywords" />
+
+
+    <script>
+        $(document).ready(function () {
+            $(".table td table tr>td").prepend('<i class="fas fa-check"></i>');
+
+            $("#meniu_toggle").click(function (e) {
+                if ($('#row_left').hasClass('open_rowleft')) {
+                    $('#row_left').removeClass('open_rowleft').addClass('close_rowleft');
+                    $('#meniu_toggle').find('i').removeClass('fa-times').addClass('fa-bars');
+                    $('#content').removeClass('normal_content').addClass('full_content');
+                }
+                else {
+                    $('#row_left').removeClass('close_rowleft').addClass('open_rowleft');
+                    $('#meniu_toggle').find('i').addClass('fa-times').removeClass('fa-bars');
+                    $('#content').addClass('normal_content').removeClass('full_content');
+
+                }
+                e.preventDefault();
+
+
+            });
+
+            $(document).mouseup(function (e) {
+                var container = $("#row_left");
+
+                if (container.is(e.target) && container.has(e.target).length === 0) {
+                    $('#row_left').removeClass('close_rowleft').addClass('open_rowleft');
+                    $('#meniu_toggle').find('i').addClass('fa-times').removeClass('fa-bars');
+                    $('#content').addClass('normal_content').removeClass('full_content');
+                }
+            });
+
+
+
+        });
+    </script>
+
+
+    <!-- Favicons -->
+    <link rel="icon" href="favicon.ico" type="image/ico" />
+    <!-- Google Fonts -->
+
+
+    <!-- Vendor CSS Files -->
+    <link href="CSS_Angajati/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" /><link href="CSS_Angajati/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" /><link href="CSS_Angajati/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" /><link href="CSS_Angajati/vendor/quill/quill.snow.css" rel="stylesheet" /><link href="CSS_Angajati/vendor/quill/quill.bubble.css" rel="stylesheet" /><link href="CSS_Angajati/vendor/remixicon/remixicon.css" rel="stylesheet" /><link href="CSS_Angajati/vendor/simple-datatables/style.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="CSS_Angajati/css/style.css" rel="stylesheet" />
+
+
+    <!-- vechi-->
+    <link rel="icon" href="favicon.ico" type="image/ico" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+    <!-- fontawesome-->
+    <link href="css/all.css" rel="stylesheet" type="text/css" /><link href="css/solid.css" rel="stylesheet" type="text/css" /><link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!-- bootstrap-->
+    <link href="css/bootstrap.min.css" rel="stylesheet" /><link href="css/bootstrap-table.min.css" rel="stylesheet" />
+    <script type="text/javascript" async="" src="https://matomo.ubbcluj.ro/matomo.js"></script>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+
+    <script src="js/tablecustom.js"></script>
+
+    <!-- bootstrap-->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-table.min.js"></script>
+
+    <!-- end vechi-->
+
+    <!-- Matomo -->
+    <script type="text/javascript">
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['disableCookies']);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        _paq.push(['trackAllContentImpressions']);
+        (function () {
+            var u = "https://matomo.ubbcluj.ro/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '6']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript'; g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
+
+
+    <style>
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #fff;
+            color: #ffffff;
+            text-align: center;
+            font-size: 10px;
+            padding-left: 15px;
+        }
+
+            .footer .copy_footer {
+                text-align: left;
+                color: #666666;
+                clear: left;
+            }
+    </style>
+    
+    <title>Studenti</title>
+
+    <link href="StyleSheet/StylePopload.css" rel="stylesheet" />
+
+   
+</head>
+<body>
+    <script src="Scripts/wz_tooltip.js" type="text/javascript"></script>
+    <form name="aspnetForm" method="post" action="./Studenti.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="B8608825" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="VWxIo+H3/AGF26R/bbAbUHyzeqewLp10EQYUTPIpYC5ydqglDFR4nBBBUf8kpUxFTBxQsEVNUTaEIKzYc1a6zIt2yQQsncBzCpcT1HWKi7Rkkc4GRM3AQMxVewSEuNJsY8PiCn1UApK2YrD9daL1agUBkXoORe6+F3t2pyYXA7QH/2P1aveZz475huBpAm5pA80ZPEVgLbURO0Mzw/cmrw==" />
+</div>
+
+
+        <!-- ======= Header ======= -->
+        <header id="header" class="header fixed-top d-flex align-items-center">
+            <div class="col-lg-2 logo d-flex align-items-center justify-content-between">
+                
+                
+            </div>
+            <!-- End Logo -->
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+            <div class="col-lg-6 align-items-center justify-content-between text-center ">
+                <h1>Academic<em style="color: #F44336;">Info</em></h1>
+            </div>
+            <!-- End Search Bar -->
+
+            <nav class="header-nav ms-auto">
+                <ul class="d-flex align-items-center">
+                    <li class="nav-item dropdown pe-3">
+                        <a class="nav-link nav-profile d-flex align-items-center pe-0 fs-4">
+                            <i class="ri-account-circle-fill"></i>
+                            <span id="ctl00_lblNume">MUREȘAN IANIS-CONSTANTIN</span>
+                        </a>
+                        <!-- End Profile Iamge Icon -->
+                        <!-- End Profile Dropdown Items -->
+                    </li>
+                    <!-- End Profile Nav -->
+                </ul>
+            </nav>
+
+            <!-- End Icons Navigation -->
+
+        </header>
+        <!-- End Header -->
+
+        <!-- ======= Sidebar ======= -->
+        <aside id="sidebar" class="sidebar">
+            <ul class="sidebar-nav" id="sidebar-nav">
+                <li class="header_logo text-center ">
+                    <a href="https://www.ubbcluj.ro/ro/" target="_blank" class="logo d-flex align-items-center">
+                        <img src="CSS_Angajati/img/Logo-UBB-alb.svg" alt="">
+                    </a>
+
+                </li>
+                <li class=" py-1  text-right pr-1 header_logo">
+                    <input type="image" name="ctl00$ImageButtonRO" id="ctl00_ImageButtonRO" title="Română" Text="RO" src="Images/ro.png" style="border-width:0px;" />  &nbsp;
+                    <input type="image" name="ctl00$ImageButtonHU" id="ctl00_ImageButtonHU" title="Magyar" Text="HU" src="Images/hu.png" style="border-width:0px;" />  &nbsp; 
+                    <input type="image" name="ctl00$ImageButtonEN" id="ctl00_ImageButtonEN" title="English" Text="EN" src="Images/gb.png" style="border-width:0px;" />  &nbsp;
+                    <input type="image" name="ctl00$ImageButtonDE" id="ctl00_ImageButtonDE" title="Deutsch" Text="DE" src="Images/de.png" style="border-width:0px;" />
+                </li>
+
+                <li id="ctl00_link_Home" class="nav-item">
+                    <a href="Home.aspx" id="ctl00_A2" class="nav-link collapsed" title="Home">
+                        <i class="bi bi-house"></i>
+                        <span id="ctl00_Label1Home">Home</span>
+                    </a></li>
+
+                <li id="ctl00_link_Studenti" class="active">
+                    <a href="Studenti.aspx" class="nav-link collapsed">
+                        <i class="bi bi-info"></i>
+                        <span id="ctl00_Label1">Informatii</span></a>
+                </li>
+
+                <li id="ctl00_link_IdentitateaTa" class="nav-item">
+                    <a href="IdentitateaTa.aspx" class="nav-link collapsed">
+                        <i class="bi bi-person-vcard"></i>
+                        <span id="ctl00_lblIdentitateaTa">Identitatea Ta</span>
+                    </a>
+                </li>
+
+                <!-- Nou -->
+                <!-- Virtual Wallet (vizibil doar pentru conturile de test) -->
+                
+                <!--------->
+               
+                
+
+
+                
+                <li id="ctl00_link_Note" class="nav-item">
+                    <a href="Note.aspx" id="ctl00_HyperLinkNote_" class="nav-link collapsed">
+                        <i class="bi bi-list-ul"></i>
+                        <span id="ctl00_Label1ConsultareNote">Consultare note</span></a></li>
+                <li id="ctl00_link_NoteProvizorii" class="nav-item">
+                    <a href="NoteProvizorii.aspx" id="ctl00_hlNote_" class="nav-link collapsed">
+                        <i class="bi bi-list-ul"></i>
+                        <span id="ctl00_Label1ConsultareNoteProvizorii">Consultare note provizorii</span></a>
+
+                </li>
+                <li id="ctl00_link_Evaluari" class="nav-item">
+                    <a href="Evaluari.aspx" id="ctl00_HyperLink3_" class="nav-link collapsed">
+                        <i class="bi bi-list-ul"></i>
+                        <span id="ctl00_Label1EvaluareProfesori">Evaluare profesori</span></a></li>
+                <li id="ctl00_link_StudentiPlanInvatamant" class="nav-item">
+                    <a href="StudentiPlanInvatamant.aspx" id="ctl00_hlStudentiPlanInvatamant_" class="nav-link collapsed">
+                        <i class="bi bi-list-ul"></i>
+                        <span id="ctl00_Label1PlanInvatamant">Plan invatamant</span>
+                    </a></li>
+                <li id="ctl00_link_ContracteStudii" class="nav-item">
+                    <a href="ContracteStudii.aspx" id="ctl00_hlContracte_" class="nav-link collapsed">
+                         <i class="bi bi-pencil-square"></i>
+                        <span id="ctl00_Label1ContracteStudii">Contracte studii</span></a>
+
+                </li>
+
+                <li id="ctl00_link_IncarcaDocumente" class="nav-item">
+                    <a href="IncarcaDocumente.aspx" id="ctl00_hl_IncarcaDocumente" class="nav-link collapsed">
+                        <i class="bi bi-upload"></i>
+                        <span id="ctl00_lblIncarcaDocumente">Incarcă documente </span></a>
+
+                </li>
+
+                
+
+                <li id="ctl00_link_StudentiInscriereLaExamen" class="nav-item">
+                    <a href="StudentiInscriereLaExamene.aspx" id="ctl00_hlStudentiInscriereLaExamen_" class="nav-link collapsed">
+                        <i class="bi bi-pencil-square"></i>
+                        <span id="ctl00_Label1InscriereLaExamen">Inscriere la examen</span></a>
+                </li>
+
+                <li id="ctl00_link_ProgramariExameneSectie" class="nav-item">
+                    <a href="ProgramariExameneSectie.aspx" id="ctl00_hlProgramariExameneSectie" class="nav-link collapsed">
+                        <i class="bi bi-list-ul"></i>
+                        <span id="ctl00_Label1ProgramariExameneSectie">Examene programate pe sectie</span></a>
+                </li>
+                
+
+                
+
+                <li id="ctl00_link_InscriereLucrariAbsolvire" class="nav-item">
+                    <a href="InscriereLucrariAbsolvire.aspx" id="ctl00_A1" title="Home" class="nav-link collapsed">
+                        <i class="bi bi-pencil-square"></i>
+                        <span id="ctl00_Label2">Inscriere  lucrare absolvire</span>
+                    </a>
+                </li>
+                <li id="ctl00_link_TabelLucrariAbsolvireSectie" class="nav-item">
+                    <a href="TabelLucrariAbsolvireSectie.aspx" class="nav-link collapsed">
+                        <i class="bi bi-list-ul"></i>
+                        <span id="ctl00_Label3">Tabel Lucrari Absolvire</span></a>
+                </li>
+
+                
+
+             
+                <li id="ctl00_link_Taxe" class="nav-item">
+                    <a href="Taxe.aspx" id="ctl00_hltaxe_" class="nav-link collapsed">
+                        <i class="bi bi-cash"></i>
+                        <span id="ctl00_Label1Taxe">Taxe</span></a></li>
+
+                <li id="ctl00_link_Burse" class="nav-item">
+                    <a href="Burse.aspx" id="ctl00_hlBurse_" class="nav-link collapsed">
+                        <i class="bi bi-grid"></i>
+                        <span id="ctl00_LabelBurse">Burse</span></a></li>
+
+                <li id="ctl00_link_SchimbareParolaStudenti" class="nav-item">
+                    <a href="SchimbareParolaStudenti.aspx" id="ctl00_hlSchimbareParola_" class="nav-link collapsed">
+                        <i class="bi bi-person-fill-gear"></i>
+                        <span id="ctl00_Label1SchimbareParola">Schimbare Parola</span></a></li>
+
+
+                <li class="header_top pt-2 ">
+
+
+                    <a href="https://dtic.ubbcluj.ro/" target="_blank"
+                        class="logo ">
+                        <img src="CSS_Angajati/img/Logo-DTIC-alb.svg" />
+                    </a>
+                </li>
+            </ul>
+
+
+
+        </aside>
+        <!-- End Sidebar-->
+        <main id="main" class="main pb-2 ">
+            <div class="row  text-end pb-2  ">
+                <div class="col-12   text-end  pe-5">
+                    <a class="modal-title" href="Default.aspx">
+                        <i class="bi bi-box-arrow-right fs-6"></i>
+                        <span>Sign Out </span>
+                    </a>
+                </div>
+            </div>
+            <div class="labelNume">
+
+
+                <div id="ctl00_DivInfo" class="row ">
+                    
+
+                    
+                    
+                </div>
+
+            </div>
+            <div class="row pb-3">
+                 
+                
+    <div id="content_article_header" class="content_box card">
+        <div class="row">
+            <span id="ctl00_ContentPlaceHolder1_lblPagina" class="card-title" style="display:inline-block;width:100%;">Informatii</span>
+
+        </div>
+    </div>
+    <div class="card   ">
+        <div class="card-body">
+            <div class="row">
+                <div id="content_info" class="content_box">
+                    <h5>
+
+                        <span id="ctl00_ContentPlaceHolder1_lblMicrosoftTeams2" class="text-danger">Pentru accesarea contului instituțional aveți nevoie de următoarele date de logare:</span>
+                        <br />
+                        <span id="ctl00_ContentPlaceHolder1_lblMicrosoftTeams3" class="text-danger" style="color:Red;">Platforma: </span>
+
+                        <a href="https://mail.ubbcluj.ro" target="_blank">https://mail.ubbcluj.ro </a>
+                        <br />
+
+                        <span id="ctl00_ContentPlaceHolder1_lblEmail" class="text-danger" style="color:Red;">E-mail:</span>
+                        <span id="ctl00_ContentPlaceHolder1_lbl_email">ianis.constantin.muresan@stud.ubbcluj.ro</span>
+                        
+
+                        
+                        
+                        <br />
+                        <span id="ctl00_ContentPlaceHolder1_lblMicrosoftTeamsParola" class="text-danger" style="color:Red;"> Parola initiala:</span>
+                        <span id="ctl00_ContentPlaceHolder1_lbl_MicrosoftTeamsParola">245044Stud#nt</span>
+                        <br />
+
+
+
+                        <a href="https://dtic.ubbcluj.ro/tutorial/conectare-office365-studenti/" target="_blank">
+                            <span id="ctl00_ContentPlaceHolder1_lblMicrosoftTeams_n1">Tutorial pentru prima accesare a contului</span>
+                        </a>
+                        <br />
+                        <a href="https://dtic.ubbcluj.ro/tutoriale/" target="_blank">
+                            <span id="ctl00_ContentPlaceHolder1_lblMicrosoftTeams_n2">Alte tutoriale</span>
+                        </a>
+                        <br />
+                        <a href="https://helpdesk.ubbcluj.ro/#login" target="_blank">
+                            <span id="ctl00_ContentPlaceHolder1_lblMicrosoftTeams_n3">Platformă de ticheting pentru probleme legate de cont</span>
+                        </a>
+                        <br />
+                      
+
+
+                    </h5>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="text-align: right; padding-right: 50px;">
+
+                        <h5>
+                            <a target="_blank" href="Documente/informarePDCPstudentimasteranzidoctorantiUBB.pdf">
+                                
+                            </a>
+                        </h5>
+                    </div>
+                    <div class="col-8" style="text-align: right; padding-right: 50px;">
+                        <h5>
+                            <a target="_blank" href="Documente/Ghid_PDCP_studenti_online_14102020.pdf">
+
+                                <span id="ctl00_ContentPlaceHolder1_lblGhid">Ghid pentru protecția datelor în timpul desfășurării activităților online</span>
+
+                            </a>
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="text-align: right; padding-right: 50px;">
+                        <h5>
+                            <a target="_blank" href="Documente/HCA_376_referitoare_la_Ghidul_privind_asigurarea_protectiei_datelor_cu_caracter_persona.pdf">
+                                <span id="ctl00_ContentPlaceHolder1_lblGhidExamen">Ghidul privind asigurarea protecției datelor cu caracter personal în timpul desfășurării examenelor online</span>
+                            </a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card  table-responsive  ">
+        <div class="card-body">
+            <div id="content_article_table" class="content_box">
+                <div class="row table-responsive-sm ">
+                    <div class="col  text-center pr-2  flex-fill ">
+                        <h3>
+                            <span id="ctl00_ContentPlaceHolder1_lblCodunicLabel" style="color:#426BC8;">Cod unic persoana: </span>
+                       
+                            <span id="ctl00_ContentPlaceHolder1_lblCodUnic" style="color:Red;">7Y153573</span>
+
+                        </h3>
+                    </div>
+                </div>
+
+                <div id="ctl00_ContentPlaceHolder1_LegitimatieCFR" class="row flex-fill p-1 ">
+
+                    <div class="col-sm-8 px-2  flex-fill  text-right  ">
+                        <h3  >
+                            <span id="ctl00_ContentPlaceHolder1_lblLegitimatia1" style="color:#426BC8;">Legitimaţia de transport:</span>
+
+                            <span id="ctl00_ContentPlaceHolder1_lblLegitimatia_Seria" class="col-form-label" style="color:#426BC8;">Seria</span>
+
+                            <span id="ctl00_ContentPlaceHolder1_lblLegitimatiaSeria" style="color:Red;">I    </span>
+
+                            <span id="ctl00_ContentPlaceHolder1_lblLegitimatia_NR" style="color:#426BC8;">Nr.</span>
+
+                            <span id="ctl00_ContentPlaceHolder1_lblLegitimatiaNR" style="color:Red;">79725</span>
+
+                        </h3>
+                    </div>
+                    <div id="ctl00_ContentPlaceHolder1_genereazaAdeverinta" class="col-sm-4 pl-2 text-center">
+                        <a id="ctl00_ContentPlaceHolder1_lkbGenereazaAdeverinta" class="btn btn-blue" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$lkbGenereazaAdeverinta&#39;,&#39;&#39;)">Genereaza adeverinta CFR</a>
+                    </div>
+
+                </div>
+
+                
+
+                <div class="content_box  py-2 ">
+                    <div class="row  table-responsive-sm pb-2">
+                        <div class="col-sm">
+                            <div>
+	<table class="tabelnote table table-striped  table-condensed  caption-top  table-hover  border " cellspacing="0" align="Center" rules="all" border="1" id="ctl00_ContentPlaceHolder1_gvFormaFinantare" style="border-color:Black;width:95%;border-collapse:collapse;">
+		<tr class="border-bottom border-top   border-1b">
+			<th align="center" scope="col" style="width:10px;">Nr Crt</th><th align="center" scope="col">Facultatea</th><th align="center" scope="col">Forma Studii</th><th align="center" scope="col">Sectia</th><th align="center" scope="col">Grupa</th><th align="center" scope="col">An universitar </th><th align="center" scope="col">Forma Finantare</th>
+		</tr><tr>
+			<td align="center" style="width:10px;">
+                                            <strong>
+                                                1</strong>
+                                        </td><td align="left">Facultatea de Matematică şi Informatică</td><td align="left">Licenţă</td><td align="left">Informatică (&#238;n limba engleză) -&gt; 2024/2027 </td><td align="left">925</td><td align="center">2025/2026</td><td align="left">buget</td>
+		</tr><tr>
+			<td align="center" style="width:10px;">
+                                            <strong>
+                                                2</strong>
+                                        </td><td align="left">Facultatea de Matematică şi Informatică</td><td align="left">Licenţă</td><td align="left">Informatică (&#238;n limba engleză) -&gt; 2024/2027 </td><td align="left">915</td><td align="center">2024/2025</td><td align="left">taxa</td>
+		</tr>
+	</table>
+</div>
+                            
+                        </div>
+                    </div>
+                    <div class="w-100"></div>
+
+                    <div class="row  table-responsive-sm ">
+                        <div class="col-sm">
+                            <div>
+
+</div>
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+
+                    <div id="ctl00_ContentPlaceHolder1_pnlPerioadaEvalauri" class="row bootstrap-table bootstrap4 table-responsive-sm  ">
+                        <h5>
+                            <span id="ctl00_ContentPlaceHolder1_LabelPerioadaListarEvaluariZitText" class="text-blue">Perioada completare Evaluari </span>
+                        </h5>
+                        <div>
+	<table class="  table table-striped  table-condensed  caption-top  table-hover  border" cellspacing="0" align="Center" rules="all" border="1" id="ctl00_ContentPlaceHolder1_gvperioadeChestionare" style="width:60%;border-collapse:collapse;">
+		<tr class="border-bottom border-top   border-1b">
+			<th align="center" scope="col" style="width:10px;">Nr Crt</th><th align="center" scope="col"> </th><th align="center" scope="col">Data incepere</th><th align="center" scope="col">Data sfarsit</th>
+		</tr><tr>
+			<td align="center" style="width:10px;">
+                                        <strong>
+                                            1</strong>
+                                    </td><td align="left">
+                                        <span id="ctl00_ContentPlaceHolder1_gvperioadeChestionare_ctl02_lblNrMatricol" style="display:inline-block;width:100%;">Perioada completare chestionare sem.2 ZI</span>
+                                    </td><td align="center" style="color:Red;">
+
+                                        04.05.2026
+                                    </td><td align="center" style="color:Red;">
+
+                                        24.05.2026
+                                    </td>
+		</tr><tr>
+			<td align="center" style="width:10px;">
+                                        <strong>
+                                            2</strong>
+                                    </td><td align="left">
+                                        <span id="ctl00_ContentPlaceHolder1_gvperioadeChestionare_ctl03_lblNrMatricol" style="display:inline-block;width:100%;">Perioada completare chestionare sem.2  ani terminali ZI</span>
+                                    </td><td align="center" style="color:Red;">
+
+                                        20.04.2026
+                                    </td><td align="center" style="color:Red;">
+
+                                        10.05.2026
+                                    </td>
+		</tr><tr>
+			<td align="center" style="width:10px;">
+                                        <strong>
+                                            3</strong>
+                                    </td><td align="left">
+                                        <span id="ctl00_ContentPlaceHolder1_gvperioadeChestionare_ctl04_lblNrMatricol" style="display:inline-block;width:100%;">Perioada completare chestionare sem.2  ID</span>
+                                    </td><td align="center" style="color:Red;">
+
+                                        18.05.2026
+                                    </td><td align="center" style="color:Red;">
+
+                                        31.05.2026
+                                    </td>
+		</tr><tr>
+			<td align="center" style="width:10px;">
+                                        <strong>
+                                            4</strong>
+                                    </td><td align="left">
+                                        <span id="ctl00_ContentPlaceHolder1_gvperioadeChestionare_ctl05_lblNrMatricol" style="display:inline-block;width:100%;">Perioada completare chestionare sem.2  ani terminali ID</span>
+                                    </td><td align="center" style="color:Red;">
+
+                                        04.05.2026
+                                    </td><td align="center" style="color:Red;">
+
+                                        17.05.2026
+                                    </td>
+		</tr>
+	</table>
+</div>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    
+
+
+
+    
+    <script type="text/javascript" src="js/jquery/jquery.min.js"> </script>
+    <script type="text/javascript">
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+    
+    </div>
+
+            </div>
+
+        </main>
+
+        <div id="footer" class="footer">
+            <div id="copy_footer" class="copy_footer">
+                Copyright © UBB      &nbsp; &nbsp; &nbsp; 
+                <a href="https://www.ubbcluj.ro/ro/politici/" target="_blank">
+                    <span id="ctl00_lblMicrosoftTeams12">Protecția datelor cu caracter personal</span>
+                </a>
+                &nbsp; &nbsp; &nbsp; 
+                <a target="_blank" href="Termeni_si_conditii.aspx">
+                    <span id="ctl00_lblTermeni"> Termeni și Condiții </span>
+                </a>
+                &nbsp; &nbsp; &nbsp; 
+                <a target="_blank" href="Confidentialitate.aspx">
+                    <span id="ctl00_lblConfeidentialitate">Politica de confidentialitate</span>
+                </a>
+
+            </div>
+        </div>
+    </form>
+    <!-- Vendor JS Files -->
+    <script src="CSS_Angajati/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="CSS_Angajati/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="CSS_Angajati/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="CSS_Angajati/vendor/tinymce/tinymce.min.js"></script>
+
+
+    <!-- Template Main JS File -->
+    <script src="CSS_Angajati/js/main.js"></script>
+</body>
+</html>
+
