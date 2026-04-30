@@ -111,10 +111,9 @@ def monitor(page):
 
 def main():
     with sync_playwright() as p:
-        context = p.chromium.launch_persistent_context(
-            user_data_dir=SESSION_DIR,
-            headless=False
-        )
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(storage_state="state.json")
+        page = context.new_page()
 
         page = context.new_page()
         page.goto(TARGET_URL)
