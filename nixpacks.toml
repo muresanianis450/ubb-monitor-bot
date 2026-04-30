@@ -3,9 +3,8 @@ nixPkgs = ["python313", "gcc", "glib", "nss", "atk", "gtk3", "libx11", "libxcomp
 
 [phases.install]
 cmds = [
-  "pip install -r requirements.txt",
-  "playwright install chromium --with-deps"
+  "pip install -r requirements.txt"
 ]
 
 [phases.start]
-cmd = "python main.py"
+cmd = "playwright install chromium && python main.py"
