@@ -118,15 +118,6 @@ def main():
         page = context.new_page()
         page.goto(TARGET_URL)
 
-        print("""
-🧠 FIRST TIME SETUP:
-1. Log in manually
-2. Solve CAPTCHA
-3. Navigate to semesters page
-4. Press ENTER here
-""")
-
-        input()
 
         print("💾 Session active. Starting monitor...")
 
