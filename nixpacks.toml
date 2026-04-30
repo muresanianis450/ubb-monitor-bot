@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["python311", "gcc", "glib", "nss", "atk", "gtk3", "libx11", "libxcomposite", "libxdamage", "libxrandr", "libgbm", "libasound"]
+nixPkgs = ["python313", "gcc", "glib", "nss", "atk", "gtk3", "libx11", "libxcomposite", "libxdamage", "libxrandr", "libgbm", "libasound"]
 
 [phases.install]
 cmds = [
