@@ -3,47 +3,50 @@ import smtplib
 from datetime import datetime
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import os
+
 from playwright.sync_api import sync_playwright
 
-# ─── ENV CONFIG ────────────────────────────────────────────────
-GMAIL_ADDRESS = os.getenv("GMAIL_ADDRESS")
-GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD")
-
-NOTIFY_EMAILS = os.getenv("NOTIFY_EMAILS", "").split(",")
-CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "15"))
-
-SESSION_DIR = os.getenv("SESSION_DIR", "/tmp/user_data")
-os.makedirs(SESSION_DIR, exist_ok=True)
-
-IS_CLOUD = os.getenv("CLOUD", "false") == "true"
+# ─── CONFIG ────────────────────────────────────────────────
+CONFIG = {
+    "gmail_address": "muresanianis450@gmail.com",
+    "gmail_app_password": "zqax qiip hinc jjnb",
+    "notify_email": [
+        "muresanianis450@gmail.com",
+        "andreeajigarov@gmail.com",
+    ],
+    "check_interval": 15,
+}
 
 TARGET_URL = "https://academicinfo.ubbcluj.ro/ContracteStudii.aspx"
 SEM_TARGET = "Sem:5 An:2025"
 BLOCKED_MSG = "Nu se pot completa contracte"
-# ───────────────────────────────────────────────────────────────
+SESSION_DIR = "./user_data"
+# ───────────────────────────────────────────────────────────
 
 
 def send_email(subject, body):
-    if not GMAIL_ADDRESS or not GMAIL_APP_PASSWORD:
-        print("⚠️ Email not configured")
-        return
+    recipients = CONFIG["notify_email"]
 
     msg = MIMEMultipart()
-    msg["From"] = GMAIL_ADDRESS
-    msg["To"] = ", ".join(NOTIFY_EMAILS)
+    msg["From"] = CONFIG["gmail_address"]
+    msg["To"] = ", ".join(recipients)
     msg["Subject"] = subject
 
     msg.attach(MIMEText(body, "plain"))
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(GMAIL_ADDRESS, GMAIL_APP_PASSWORD)
-        server.sendmail(GMAIL_ADDRESS, NOTIFY_EMAILS, msg.as_string())
+        server.login(CONFIG["gmail_address"], CONFIG["gmail_app_password"])
+        server.sendmail(CONFIG["gmail_address"], recipients, msg.as_string())
 
     print("📧 Email sent:", subject)
 
 
 def get_state(page):
+    """
+    Returns:
+        ("OPEN" | "CLOSED" | "NOT_FOUND")
+    """
+
     html = page.content().lower()
 
     options = page.locator("option").all_text_contents()
@@ -71,12 +74,14 @@ def monitor(page):
 
             state = get_state(page)
 
-            print(f"📊 State: {state}")
+            print(f"📊 State: {state} | URL: {page.url}")
 
+            # ─── STATE CHANGE DETECTION ───
             if state != last_state:
                 print(f"🔄 State changed: {last_state} → {state}")
                 last_state = state
 
+            # ─── LOGIC ───
             if state == "NOT_FOUND":
                 print("❌ Semester not visible yet")
 
@@ -97,7 +102,7 @@ def monitor(page):
 
                     alerted_open = True
 
-            time.sleep(CHECK_INTERVAL)
+            time.sleep(CONFIG["check_interval"])
 
         except Exception as e:
             print("⚠️ Error:", e)
@@ -106,17 +111,27 @@ def monitor(page):
 
 def main():
     with sync_playwright() as p:
-
         context = p.chromium.launch_persistent_context(
             user_data_dir=SESSION_DIR,
-            headless=IS_CLOUD
+            headless=False
         )
 
         page = context.new_page()
         page.goto(TARGET_URL)
 
-        print("💾 Browser started")
+        print("""
+🧠 FIRST TIME SETUP:
+1. Log in manually
+2. Solve CAPTCHA
+3. Navigate to semesters page
+4. Press ENTER here
+""")
 
+        input()
+
+        print("💾 Session active. Starting monitor...")
+
+        # optional startup email
         send_email(
             "🧠 Monitor started",
             f"Watching {SEM_TARGET}\n{TARGET_URL}"
