@@ -1,52 +1,41 @@
+import os
 import time
-import smtplib
+import requests
 from datetime import datetime
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-
+from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
 
-# ─── CONFIG ────────────────────────────────────────────────
-CONFIG = {
-    "gmail_address": "muresanianis450@gmail.com",
-    "gmail_app_password": "zqax qiip hinc jjnb",
-    "notify_email": [
-        "muresanianis450@gmail.com",
-        "andreeajigarov@gmail.com",
-    ],
-    "check_interval": 15,
-}
+# Load .env
+load_dotenv()
 
-TARGET_URL = "https://academicinfo.ubbcluj.ro/ContracteStudii.aspx"
-SEM_TARGET = "Sem:5 An:2025"
-BLOCKED_MSG = "Nu se pot completa contracte"
-SESSION_DIR = "./user_data"
+# ─── CONFIG ────────────────────────────────────────────────
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
+
+CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", 15))
+TARGET_URL = os.getenv("TARGET_URL")
+SEM_TARGET = os.getenv("SEM_TARGET")
+BLOCKED_MSG = os.getenv("BLOCKED_MSG")
 # ───────────────────────────────────────────────────────────
 
 
-def send_email(subject, body):
-    recipients = CONFIG["notify_email"]
+def send_telegram(message):
+    try:
+        url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
-    msg = MIMEMultipart()
-    msg["From"] = CONFIG["gmail_address"]
-    msg["To"] = ", ".join(recipients)
-    msg["Subject"] = subject
+        data = {
+            "chat_id": CHAT_ID,
+            "text": message
+        }
 
-    msg.attach(MIMEText(body, "plain"))
+        requests.post(url, data=data, timeout=10)
+        print("📲 Telegram sent")
 
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(CONFIG["gmail_address"], CONFIG["gmail_app_password"])
-        server.sendmail(CONFIG["gmail_address"], recipients, msg.as_string())
-
-    print("📧 Email sent:", subject)
+    except Exception as e:
+        print("❌ Telegram failed:", e)
 
 
 def get_state(page):
-    """
-    Returns:
-        ("OPEN" | "CLOSED" | "NOT_FOUND")
-    """
-
     html = page.content().lower()
 
     options = page.locator("option").all_text_contents()
@@ -76,12 +65,10 @@ def monitor(page):
 
             print(f"📊 State: {state} | URL: {page.url}")
 
-            # ─── STATE CHANGE DETECTION ───
             if state != last_state:
                 print(f"🔄 State changed: {last_state} → {state}")
                 last_state = state
 
-            # ─── LOGIC ───
             if state == "NOT_FOUND":
                 print("❌ Semester not visible yet")
 
@@ -95,14 +82,13 @@ def monitor(page):
                 if not alerted_open:
                     now = datetime.now().strftime("%H:%M:%S")
 
-                    send_email(
-                        f"🚨 UBB OPEN {SEM_TARGET}",
-                        f"{SEM_TARGET} is OPEN at {now}\n{TARGET_URL}"
+                    send_telegram(
+                        f"🚨 UBB OPEN {SEM_TARGET}\n🕒 {now}\n{TARGET_URL}"
                     )
 
                     alerted_open = True
 
-            time.sleep(CONFIG["check_interval"])
+            time.sleep(CHECK_INTERVAL)
 
         except Exception as e:
             print("⚠️ Error:", e)
@@ -112,19 +98,18 @@ def monitor(page):
 def main():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        context = browser.new_context(storage_state="state.json")
-        page = context.new_page()
+
+        context = browser.new_context(
+            storage_state="state.json"
+        )
 
         page = context.new_page()
         page.goto(TARGET_URL)
 
+        print("💾 Session loaded. Starting monitor...")
 
-        print("💾 Session active. Starting monitor...")
-
-        # optional startup email
-        send_email(
-            "🧠 Monitor started",
-            f"Watching {SEM_TARGET}\n{TARGET_URL}"
+        send_telegram(
+            f"🧠 Monitor started\nWatching {SEM_TARGET}\n{TARGET_URL}"
         )
 
         monitor(page)
